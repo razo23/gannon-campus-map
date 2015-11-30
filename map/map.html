@@ -1,0 +1,177 @@
+<div ng-init="init()" class="map-page-container">
+
+  <div class="row gannon-btn-wrapper">
+		<div class="col-xs-6 col-sm-4">
+		  <input type="text" class="form-control" ng-model="keyword" placeholder="type a building name......."/>
+		</div>
+		<div class="col-xs-6 col-sm-2">
+		  
+		  <button type="button" class="gannon-map-btn" ng-click="onReset()">
+			Reset
+		  </button>
+
+
+		</div>
+		<div class="col-xs-6 col-sm-2"></div>
+
+		<div class="col-xs-6 col-sm-2">
+		  
+	
+
+		</div>
+		<div class="col-xs-6 col-sm-2">
+		  
+		  <button type="button" class="btn btn-danger gannon-map-btn" ng-click="clearMap()">
+			Clear Map
+		  </button>
+
+		</div>
+	  </div>
+
+
+
+  <div class="row gannon-tab-wrapper map-wrapper">
+
+	<div class="col-xs-4 col-sm-4 map-wrapper">
+
+	  <uib-tabset justified="true">
+		<uib-tab heading="Categories">
+
+		<div class="gannon-wrapper">
+
+			<uib-accordion close-others="true">
+			
+				<uib-accordion-group is-open="status.acadmic">
+				  <uib-accordion-heading ng-click="openAdministration()">
+					Acadmic <i class="pull-right glyphicon" ng-class="{'glyphicon-minus': status.acadmic, 'glyphicon-plus': !status.acadmic}" ></i>
+				  </uib-accordion-heading>
+
+				  <div ng-repeat="building in buildings">
+					<a ng-click="onNavigate(building)" ng-if="building.tbl_department == 'Acadmic'">{{building.tbl_name}}</a>
+				  </div>
+
+				</uib-accordion-group>
+				
+				<uib-accordion-group is-open="status.admin">
+				  <uib-accordion-heading ng-click="openAdministration()">
+					Administration <i class="pull-right glyphicon" ng-class="{'glyphicon-minus': status.admin, 'glyphicon-plus': !status.admin}" ></i>
+				  </uib-accordion-heading>
+
+				  <div ng-repeat="building in buildings">
+					<a ng-click="onNavigate(building)" ng-if="building.tbl_department == 'Administration'">{{building.tbl_name}}</a>
+				  </div>
+				</uib-accordion-group>
+
+				<uib-accordion-group is-open="status.athletic">
+				  <uib-accordion-heading>
+					Athletic <i class="pull-right glyphicon" ng-class="{'glyphicon-minus': status.athletic, 'glyphicon-plus': !status.athletic}"></i>
+				  </uib-accordion-heading>
+
+				  <div ng-repeat="building in buildings">
+					<a ng-click="onNavigate(building)" ng-if="building.tbl_department == 'Athletic Facilities'">{{building.tbl_name}}</a>
+				  </div>
+
+				</uib-accordion-group>
+				
+				<uib-accordion-group is-open="status.landmarks">
+				  <uib-accordion-heading>
+					Landmarks <i class="pull-right glyphicon" ng-class="{'glyphicon-minus': status.landmarks, 'glyphicon-plus': !status.landmarks}"></i>
+				  </uib-accordion-heading>
+
+				  <div ng-repeat="building in buildings">
+					<a ng-click="onNavigate(building)" ng-if="building.tbl_department == 'Landmarks'">{{building.tbl_name}}</a>
+				  </div>
+
+				</uib-accordion-group>
+				
+				<uib-accordion-group is-open="status.residence">
+				  <uib-accordion-heading>
+					Residence <i class="pull-right glyphicon" ng-class="{'glyphicon-minus': status.residence, 'glyphicon-plus': !status.residence}"></i>
+				  </uib-accordion-heading>
+
+				  <div ng-repeat="building in buildings">
+					<a ng-click="onNavigate(building)" ng-if="building.tbl_department == 'Residence'">{{building.tbl_name}}</a>
+				  </div>
+
+				</uib-accordion-group>
+				
+				<uib-accordion-group is-open="status.service">
+				  <uib-accordion-heading>
+					Student Services <i class="pull-right glyphicon" ng-class="{'glyphicon-minus': status.service, 'glyphicon-plus': !status.service}"></i>
+				  </uib-accordion-heading>
+
+				  <div ng-repeat="building in buildings">
+					<a ng-click="onNavigate(building)" ng-if="building.tbl_department == 'Student services'">{{building.tbl_name}}</a>
+				  </div>
+
+				</uib-accordion-group>
+			 </uib-accordion>
+
+		</div>
+
+		</uib-tab>
+		<uib-tab heading="Directions" select="onChangeTab()">
+			<div class="gannon-tab-directin-container">
+				<h4> Directions </h4>          
+				<div class="btn-group">
+					<label class="btn btn-success gannon-btn-map-toggle" ng-model="data.direction_mode" uib-btn-radio="'Car'" uncheckable>Car</label>
+					<label class="btn btn-success gannon-btn-map-toggle" ng-model="data.direction_mode" uib-btn-radio="'Walk'" uncheckable>Walk</label>
+				</div>
+
+				<div class="gannon-direction-tab-subcontainer">		
+					From		
+					</br>
+					<autocomplete ng-model="data.startBuildingName" click-activation="true" data="buildingNames"></autocomplete>
+			
+				</div>
+				
+				<div class="gannon-direction-tab-subcontainer" style="margin-top: 0px !important;">		
+					To
+					</br>
+					<autocomplete ng-model="data.destBuildingName" click-activation="true" data="buildingNames"></autocomplete>
+
+				</div>
+
+				<button class="gannon-map-btn" ng-click="getDirection()"> Get Direction </button>
+				
+				<div ng-show="data.show">
+					<h4>Duration: {{data.duration}} </h4>
+					<h4>Distance: {{data.distance}} </h4>					
+				</div>
+			</div>
+		</uib-tab>
+		<uib-tab heading="Options">
+			<div class="gannon-tab-option-container">
+				<h4> Options </h4>          
+				
+					</br>
+					<input class="gannon-option-checkbox" type="checkbox" ng-model="status.stop" checked> Show Knight Rider Shuttle Stop </input>
+					</br>
+					<input class="gannon-option-checkbox" type="checkbox" ng-model="status.parking"> Show Parkings </input>
+					</br>
+					<input class="gannon-option-checkbox" type="checkbox" ng-model="status.emergency"> Show Emergency Call Box </input>
+					
+			</div>
+		</uib-tab>
+	  </uib-tabset>
+		<a class="app-badge" href=""> 
+			<img src="../assets/appstore.png"></img>
+		</a>
+		<a class="app-badge" href=""> 
+			<img src="../assets/googlestore.png"></img>
+		</a>
+	</div>
+
+	<div class="col-xs-8 col-sm-8 map-wrapper">
+
+		 <map center="{{option.lat}},{{option.lng}}" zoom="{{option.zoom}}" style="height: 100% !important;" map-type-id="ROADMAP" >
+			<marker ng-repeat="building in buildings" ng-show="false" id="{{building.tbl_index}}" position="{{building.tbl_lat}},{{building.tbl_lng}}" title="{{building.tbl_name}}" ng-show="true" icon="assets/markers/{{building.icon_name}}.png" on-click="showInfoWindow(event, building)" >
+			</marker>
+		</map>
+
+	</div>
+
+  </div>
+  
+
+</div>

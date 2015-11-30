@@ -1,0 +1,248 @@
+/* app css stylesheet */
+
+div.gannon-container
+{
+  height: 100vh !important;
+
+}
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+div.logo-container
+{
+  width: 310px !important;
+  text-align: left;
+}
+
+img.slogan
+{
+  margin-top: 19px; 
+  margin-left: 10px;
+}
+
+
+div.gannon-header
+{
+  /*width: 100%;*/
+  height: 100px;
+  background-image: url("assets/pattern.png");
+  background-repeat: repeat-x|repeat-y;
+}
+
+.gannon-logo
+{
+	background: url('assets/logo.png') no-repeat center;
+  margin: 5px;
+  width: 210px;
+  height: 89px;
+  display: block;
+}
+
+button.gannon-map-btn
+{
+  width: 100%;
+  background: #660000;
+  background-image: -webkit-linear-gradient(top, #660000, #660000);
+  background-image: -moz-linear-gradient(top, #660000, #660000);
+  background-image: -ms-linear-gradient(top, #660000, #660000);
+  background-image: -o-linear-gradient(top, #660000, #660000);
+  background-image: linear-gradient(to bottom, #660000, #660000);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border-width: 0px;
+}
+
+button.gannon-map-btn:hover {
+
+  background-image: -webkit-linear-gradient(top, #460000, #460000);
+  background-image: -moz-linear-gradient(top, #460000, #460000);
+  background-image: -ms-linear-gradient(top, #460000, #460000);
+  background-image: -o-linear-gradient(top, #460000, #460000);
+  background-image: linear-gradient(to bottom, #460000, #460000);
+  text-decoration: none;
+  border-width: 0px;	
+  background-color: #460000;
+color: #f2af32;
+}
+
+
+/* Map Page*/
+
+div.gannon-btn-wrapper
+{
+  margin-top: 15px;
+}
+
+div.gannon-tab-wrapper
+{  
+  margin-top: 15px;
+  height: 100%;
+}
+
+.padded-row {
+    margin-top: 10px;
+}
+
+.large-padded-row {
+    margin-top: 20px;
+}
+
+.very-large-padded-row {
+    margin-top: 40px;
+}
+
+
+div.gannon-wrapper
+{
+  margin-top: 15px;
+}
+
+div.map-wrapper
+{
+  height: 100% !important;
+}
+
+div.map-page-container
+{
+  height: 100%;
+}
+
+div.gannon-tab-directin-container
+{
+  text-align: center;
+  padding: 10px;
+}
+
+label.gannon-btn-map-toggle
+{
+	width: 100px;
+	background-color: #660000;
+	color: #ffffff;
+	border: 0px !important;
+}
+
+label.gannon-btn-map-toggle.btn-success.active
+
+{
+	width: 100px;
+	background-color: #460000;
+	color: #f2af32;
+	border: 0px !important;
+}
+
+label.gannon-btn-map-toggle.btn-success:hover
+
+{
+	width: 100px;
+	background-color: #460000;
+	color: #f2af32;
+	border: 0px !important;
+}
+
+
+div.gannon-direction-tab-subcontainer
+{
+  padding: 10px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.gannon-map-input
+{
+  margin-top: 10px;
+}
+.gannon-map-input:hover
+{
+  margin-top: 10px;
+}
+
+.gannon-tab-option-container
+{
+	text-align: left;
+	padding: 15px;
+	
+}
+
+.gannon-option-checkbox
+{
+	font-size: 1.5em;
+	margin: 10px;
+}
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+  margin-top: 5px;
+  margin-botton: 5px;
+}
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.nav-tabs.nav-justified > li > a {
+	background-color: #660000;
+	color: #ffffff;
+	border-radius: 0px;	
+	border: 0px !important;
+}
+.nav-tabs.nav-justified > .active > a {
+	background-color: #460000;
+	color: #f2af32;
+	border-radius: 0px;
+	border-width: 0px;
+	border: 0px !important;
+}
+.nav-tabs.nav-justified > li > a:hover {
+	background-color: #460000;
+	color: #f2af32;
+	border-radius: 0px;
+	border: 0px !important;
+}
+
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:visited {
+	background-color: #460000;
+	color: #f2af32;
+	border-radius: 0px;
+	border-width: 0px;
+	border: 0px !important;
+}
+
